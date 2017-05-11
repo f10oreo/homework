@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+		<meta charset="UTF-8">
+		<title>Lesson 5 - Assignment</title>				
+        <link rel="stylesheet" type="text/css" href="lesson.css">
+        <script type="text/javascript" src="lesson.js"></script>
+    </head>    
+	<body>
+        <div id="bodywrap">
+            <header> <!-- Header -->    
+                <h1>Assignment 5</h1>
+                <h2>Faith-Lynn Tenorio</h2>                 
+            </header>  
+             
+            <aside>
+                <h3>Prompt</h3>
+                <p>
+                    Number Guessing Game – Write a script that will guess the number a 
+                    user entered from 1 to 999. Users can only enter whole numbers, but 
+                    you need to validate the entry.  If the number entered is valid, 
+                    continue with your guesses.  If the input is not valid, inform the 
+                    user without making any guess attempts.
+                </p>
+                <p>
+                    Your script is NOT allowed to evaluate the users input for anything 
+                    other than logical comparisons such as greater than, less than or equal to.
+                </p>
+                <p>
+                    You have a maximum of 10 guesses.
+                </p>
+                <p>
+                    Each guess from your script will result in two lines of output:
+                </p>
+                <p>
+                    <ol>
+                        <li>
+                            an indication of what number is being guessed
+                        </li>
+                        <li>an indication of the result of the guess compared to the users 
+                            number – guess is greater than the number, guess is less than the 
+                            number or guessed the right number
+                        </li>
+                    </ol>
+                </p>
+                <p>
+                    Each set of guess output will be numbered to indicate how many guesses 
+                    have been made.
+                </p>
+                <p>
+                    If you guess the number in 10 or fewer guesses, let the user know you 
+                    won.  If you don’t guess the number in 10 guesses, let the user know they won.
+                </p>
+                <p>
+                    Output to the user is to be done using innerHTML so both lines of each 
+                    guess output is in their own paragraph.  All guesses are to remain on 
+                    the screen at the end of each game – don’t overwrite a previous guess.
+                </p>
+                <p>
+                    You may use any type of loop structure you would like to control your guesses.
+                </p>
+                <p>
+                    Write a pseudo code document outlining the processing before designing
+                    your JavaScript code.
+                </p>
+                <p>
+                    If you choose to include CSS in your assignment, it must be in an external CSS file.
+                </p>
+                <p>
+                    You will submit your HTML file, pseudo-code, and any additional files 
+                    in a single zip file. Name your zip file to submit - "yourname-L5.zip."
+                </p>
+           </aside>
+            
+            <section>
+                <h3>Can I guess your number in 10 tries or less?</h3>
+                <form action="#" method="post" enctype="multipart/form-data" name="numberform" id="numberform">                
+                    <p class="forminput">
+                        <label for="numinput">
+                            Enter a Number from 1 to 999,<br />
+                            then press the button when you're ready for me to guess!
+                        </label><br />
+                        <input type="text" name="numinput" id="numinput" size="30" maxlength="10" /><br />
+                    </p>
+                    <p class="buttons">
+                        <span class="button" onclick="processNum();">Will I guess your number?</span>
+                    </p>
+                </form>
+                <div id="printresults">
+                </div>
+            </section>
+            
+        </div>     
+	</body>
+</html> 
+
