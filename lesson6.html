@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+		<meta charset="UTF-8">
+		<title>Lesson 6 - Assignment</title>				
+        <link rel="stylesheet" type="text/css" href="lesson.css">
+        <script type="text/javascript" src="lesson.js"></script>
+    </head>    
+	<body>
+        <div id="bodywrap">
+            <header> <!-- Header -->    
+                <h1>Assignment 6</h1>
+                <h2>Faith-Lynn Tenorio</h2>                 
+            </header>  
+             
+            <aside>
+                <h3>Prompt</h3>
+                <p>
+                    Palindrome Testing – a palindrome is a word or phrase that spells the 
+                    same thing forward or backwards. “civic” is a palindrome. Users will 
+                    be allowed to enter a single word to test – no spaces allowed.
+                </p>
+                <p>
+                    Write a script that will test if the word entered is a palindrome. 
+                    You are NOT allowed to use the JavaScript reverse() method.
+                </p>
+                <p>
+                    Your JavaScript is to be placed in an external file and use at least 
+                    one callback function for other than the initial windows.onload event.
+                </p>
+                <p>
+                    User entry is to be limited to 10 characters maximum, tested and 
+                    controlled only through JavaScript. Do NOT limit the entry length via 
+                    form field attributes.  Inform the user if their entry is too short or
+                    too long. Input length validation is to be its own function that 
+                    returns a true or false.
+                </p>
+                <p>
+                    Inform the user if their input is valid and if it is a palindrome or not.
+                </p>
+                <p>
+                    Write a pseudo code document outlining the processing before designing your JavaScript code.
+                </p>
+                <p>
+                    If you choose to include CSS in your assignment, it must be in an external CSS file.
+                </p>
+                <p>
+                    You will submit your HTML file, pseudo-code, and any additional files 
+                    in a single zip file. Name your zip file to submit - "yourname-L6.zip."
+                </p>
+           </aside>
+            
+            <section>
+                <h3>Can I guess your number in 10 tries or less?</h3>
+                <form action="#" method="post" enctype="multipart/form-data" name="textform" id="textform">                
+                    <p class="forminput">
+                        <label for="textinput">
+                            Enter a Number from 1 to 999,<br />
+                            then press the button when you're ready for me to guess!
+                        </label><br />
+                        <input type="text" name="textinput" id="textinput" size="30"/><br />
+                    </p>
+                    <p class="buttons">
+                        <span class="button" onclick="processText();">Will I guess your number?</span>
+                    </p>
+                </form>
+                <div id="printresults">
+                </div>
+            </section>
+            
+        </div>     
+	</body>
+</html> 
