@@ -2,43 +2,56 @@
 function processText () {
     var textInput = document.getElementById("textinput").value;
     var textString = String(textInput);
+    var textLength= textString.length;
     var hasSpaces = textString.indexOf(" ");
+    var textMatch = " ";
 
-    if (textInput.length == "") {
+    if (textLength == "") {
         alert("You didn't enter anything.");    
-    } else if (textInput.length < 3) {
+    } else if (textLength < 3) {
         alert("Your entry is shorter than 3 characters. \nPlease use more characters.");
-    } else if (textInput.length > 10) {
+    } else if (textLength > 10) {
         alert("Your entry is longer than 10 characters. \nPlease use less characters.");
     } else if (hasSpaces != -1) {
         alert("Please don't include spaces.");
+    } else if (textLength %2  ==  0) { 
+        textMatch += "not a palindrome";
     } else {
         findPalindrome ();
-    }    
+    }  
+    
+    document.getElementById("printresults").innerHTML = textMatch;
 } //end function processText
-
 
 // COMPARE FIRST AND LAST OBJECTS IN USER INPUT
 function findPalindrome () {
     var textInput = document.getElementById("textinput").value;
     var textString = String(textInput);
-    var x = textString.length;
-    var y = textString.slice(0,x); // ?????
+    var textLength= textString.length;
+    var compareLength = (textLength / 2) + 0.5;
     var textMatch = " ";
+    var flag = true;
+    var i = 1;
     
-    alert ("I'm looking for a palindrome");
+    flag = true; 
+    i = 1; 
+    compareLength = (textLength / 2) + 0.5;
     
-    x = 10;
-    while (x > 2) {
-        if (textString[0] == textString[x-1]) { 
-            textMatch = "Wow we match";
+    while ((flag == true) && (i <= compareLength)) {
+        if (textString[i - 1] == textString[textLength - i]) {
+            flag = true;
         } else {
-            textMatch = "Wow we don't match";
+            flat = false;
+            break;
         }
-        x--;
+        i++;
     }
-
+    
+    if (flag == true) {
+        textMatch += "FINALLY";
+    } else {
+        textMatch += "TRY AGAIN SCRUBLORD";
+    }
     
     document.getElementById("printresults").innerHTML = textMatch;
-    
-} //end function findPalindrome
+} // end function findPalindrome
