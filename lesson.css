@@ -6,7 +6,7 @@
 
 body {
     font-family: Courier New, monospace;
-    font-size: 10px;
+    font-size: 11px;
 }
 
     h1 {
@@ -26,10 +26,14 @@ body {
         margin-bottom: 5px;
     }
     
-        p.buttons {
-            margin: 10px 0px 10px 0px;
+        .buttons {
+            padding: 20px 0px 20px 0px;
             text-align: center;
-        }    
+        } 
+    
+    ul {
+        padding-left: 13px;
+    }   
     
     .button {
         border: 1px solid black;
@@ -73,6 +77,7 @@ section {
     width: 500px;
 }
 
+    /* Images */
     #imageLeft {
         border-right: 1px dashed black;
         float:left;
@@ -82,4 +87,34 @@ section {
     #imageRight {
         float: right;
         width: 250px; 
+    }
+    
+    /* Tables */
+    tr {
+        height: 30px;
+    }
+    
+    th {
+        padding-right: 5px;
+        text-align: right;
+        width: 115x;
+    }
+    
+    td {
+        width: 190px;
+    }
+    
+    /* Forms */
+    input {
+        padding-left: 5px;
+        width: 150px;
+    }
+    
+    .error {
+        color: #000;
+    }
+    
+    /* User Feedback */
+    #printresults {
+        font-size: 14px;
     }
