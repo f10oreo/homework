@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+		<meta charset="UTF-8">
+		<title>Lesson 7 - Assignment</title>				
+        <link rel="stylesheet" type="text/css" href="lesson.css">
+        <script type="text/javascript" src="lesson7.js"></script>
+    </head>    
+	<body>
+        <div id="bodywrap">
+            <header> <!-- Header -->    
+                <h1>Assignment 7</h1>
+                <h2>Faith-Lynn Tenorio</h2>                 
+            </header>  
+             
+            <aside> <!-- Prompt -->
+                <h3>Prompt</h3>
+                <p>
+                    Create a basic webpage that will include a form for order processing.
+                </p>
+                <p>
+                    The form will contain fields to enter:
+                </p>
+                <ul>
+                    <li>First Name</li>
+                    <li>Last Name</li>
+                    <li>Phone number</li>
+                    <li>Quantity of widgets to order</li>
+                    <li>Read only field to display widget price @ $4.95/each</li>
+                </ul>                
+                <p>
+                    Use regular expressions to validate these fields:
+                <ul>
+                    <li>Name will contain only alphabetic characters, spaces are legal</li>
+                    <li>
+                        <ul>
+                            <li>First name – 2 to 15 characters</li>
+                            <li>Last name – 2-25 characters</li>
+                        </ul>
+                    </li>
+                    <li>Phone number will be in (xxx) xxx-xxxx format</li>
+                    <li>Quantity of widgets to order is a number from 1-99</li>
+                </ul>
+                <p>
+                    Total order calculations:
+                </p>
+                <ul>
+                    <li>Widget price is $4.95/each</li>
+                    <li>Sales tax is 8.5%</li>
+                    <li>Percentage discounts of 10% at intervals of 10 widgets ordered
+                        – 10% for every 10 ordered</li>
+                    <li>
+                        <ul>
+                            <li>Be sure discount is calculated before sales tax is applied</li>
+                            <li>Maximum discount is 40%</li>
+                            <li>
+                                <ul>
+                                    <li>1-9 ordered – no discount</li>
+                                    <li>10-19 ordered – 10% discount</li>
+                                    <li>20-29 ordered – 20% discount</li>
+                                    <li>Etc…</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    Provide for user feedback if user entry is not formatted correctly or does not meet proper criteria.
+                </p>
+                <p>
+                    When all fields validate properly, output order information somewhere below the form using innerHTML.  Order information will include:
+                </p>
+                <ul>
+                    <li>Users full name and phone number</li>
+                    <li>Quantity of widgets ordered</li>
+                    <li>Information on any discounts applied</li>
+                    <li>Amount of sales tax charged</li>
+                    <li>Total of order</li>
+                </ul>
+            </aside>
+            
+            <section> <!-- Response -->
+                <h3>Limited Edition: First Year Subscriber Shirt Campaign</h3>
+                <form action="#" method="post" enctype="multipart/form-data" name="orderForm" id="orderform">
+                    <table>
+                        <tr>
+                            <th><label for="firstname">First Name:</label></th>
+                            <td><input type="text" name="firstname" id="firstname" placeholder="Noblest" onblur="gatherInput(this);" /></td>
+                            <td id="errorfirst" class="error"></td>
+                        </tr>
+            
+                        <tr>
+                            <th><label for="lastname">Last Name:</label></th>
+                            <td><input type="text" name="lastname" id="lastname" placeholder="Steed" onblur="gatherInput(this);" /></td>
+                            <td id="errorlast" class="error"></td>
+                        </tr>
+            
+                        <tr>
+                            <th><label for="phone">Phone Number:</label></th>
+                            <td><input type="text" name="phone" id="phone" placeholder="(xxx) xxx-xxxx" onblur="gatherInput(this);" /></td>
+                            <td id="errorphone" class="error"></td>
+                        </tr>
+            
+                        <tr>    
+                            <th><label for="quantity">Shirt Quantity:</label></th>
+                            <td><input type="text" name="quantity" id="quantity" value="1" onblur="gatherInput(this);" /></td>
+                            <td id="errorquantity" class="error"></td>
+                        </tr>
+            
+                        <tr>
+                            <th><label for="singleprice">Price Per Shirt</label></th>
+                            <td><input type="text" name="singleprice" id="singleprice" value="4.95" readonly="readonly" /></td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="3" class="buttons">
+                                <input type="button" value="Submit" name="Submit" id="submit" onclick="processOrder();"/>
+                                <input type="reset" value="Reset" name="reset" id="reset" onclick="resetErrors();"/>
+                            </td>
+                        </tr>                 
+            
+                        <tr>
+                            <td colspan="3" id="printresults">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </section>
+            
+        </div>     
+	</body>
+</html> 
