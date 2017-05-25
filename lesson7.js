@@ -14,6 +14,10 @@ function gatherInput(field) {
             processInput("quantity", /^[1-9][0-9]?$/, "errorquantity", "Please enter a quantity between 1 to 99.");
             break;
     }
+    
+    /* return processInput(inputID, validTest, errorID, errorMSG); - this tells me 
+        inputID and probably the other arguments are not defined)
+    */
 } // end gatherInput     
 
 // VALIDATE INPUT FIELD + PRINT ERROR MESSAGE    
@@ -41,22 +45,19 @@ function processOrder() {
     
 /* PROBLEM: trying to call gatherInput(firstname) and get the result of it being passed 
     through processInput. have tried return result and return true/false but 
-    console.log(firstValid) etc. provides undefined
+    console.log(firstValid) etc. provides undefined. have also tried return process in 
+    gatherInput (commented in up there) but that doesn't work either
+    tldr: i'm trying to input something into gatherInput then get the result of processInput
 */ 
-
     var firstValid = gatherInput(firstname); 
     var lastValid = gatherInput(document.getElementById("lastname"));
     var phoneValid = gatherInput(document.getElementById("phone"));
     var quantityValid = gatherInput(document.getElementById("quantity"));
 
     console.log(firstValid);
-
-
+    
     if ((firstValid == true) && (lastValid == true) && (phoneValid == true) && (quantityValid == true)) {
-        printOrder("you got it!");
-        
-        
-        
+        printOrder("you got it!");       
     } else {
         errorfirst.style.color = "Red";
         errorlast.style.color = "Red";
