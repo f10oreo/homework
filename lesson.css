@@ -93,12 +93,12 @@ section {
     th.header {
         padding-left: 25px;
         text-align: left;
-        width: 325px;
+        width: 188px;
     }
     
     td.value {
         text-align: right;
-        width: 150px;
+        width: 306px;
     }
     
     /* Forms */
