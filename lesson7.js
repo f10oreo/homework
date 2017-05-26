@@ -154,7 +154,7 @@ function resetErrors() {
     printOrder("printPhone", " ", "outputPhone", " ");
     printOrder("printQuantity", " ", "outputPrice", " ");
     printOrder("printDiscount", " ", "outputDiscount", " ");
-    printOrder("printSubtotal", " ", "outputSubtotal", "$" + " ");
+    printOrder("printSubtotal", " ", "outputSubtotal", " ");
     printOrder("printTax", " ", "outputTax", " ");
-    printOrder("printTotal", " ", "outputTotal", "$" + " ");
+    printOrder("printTotal", " ", "outputTotal", " ");
 } //end resetErrors
