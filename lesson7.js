@@ -119,10 +119,10 @@ function calcOrder() {
     printOrder("printOrder", "<h3>Order Confirmation</h3>", "outputOrder", " ");
     printOrder("printName", "Customer Name", "outputName", fullname);
     printOrder("printPhone", "Phone Number", "outputPhone", phone);
-    printOrder("printQuantity", quantity + " stickers", "outputPrice", "$" + priceTotal.toFixed(2));
-    printOrder("printDiscount", "Bulk Discount (20-49 stickers)", "outputDiscount", "-$" + discount.toFixed(2));
+    printOrder("printQuantity", quantity + " sticker(s)", "outputPrice", "$" + priceTotal.toFixed(2));
+    printOrder("printDiscount", "Quantity Discount (20-49 stickers)", "outputDiscount", "-$" + discount.toFixed(2));
     printOrder("printSubtotal", "Subtotal", "outputSubtotal", "$" + subTotal.toFixed(2));
-    printOrder("printTax", "Sales Tax", "outputTax", "+$" + taxAmount.toFixed(2));
+    printOrder("printTax", "Sales Tax (8.5%)", "outputTax", "+$" + taxAmount.toFixed(2));
     printOrder("printTotal", "Order Total", "outputTotal", "$" + orderTotal.toFixed(2));
   
 } //end calcOrder
