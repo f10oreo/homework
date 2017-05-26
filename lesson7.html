@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<title>Lesson 7 - Assignment</title>				
         <link rel="stylesheet" type="text/css" href="lesson.css">
-        <script type="text/javascript" src="lesson7.js"></script>
+        <script type="text/javascript" src="lesson.js"></script>
     </head>    
 	<body>
         <div id="bodywrap">
@@ -81,52 +81,89 @@
             </aside>
             
             <section> <!-- Response -->
-                <h3>Limited Edition: First Year Subscriber Shirt Campaign</h3>
+                <h3>Limited Edition: First Year Subscriber Sticker Campaign</h3>
                 <form action="#" method="post" enctype="multipart/form-data" name="orderForm" id="orderform">
                     <table>
-                        <tr>
-                            <th><label for="firstname">First Name:</label></th>
-                            <td><input type="text" name="firstname" id="firstname" placeholder="Noblest" onblur="gatherInput(this);" /></td>
+                        <tr class="form">
+                            <th class="form"><label for="firstname">First Name:</label></th>
+                            <td class="form"><input type="text" name="firstname" id="firstname" placeholder="Noblest" onblur="processInput(this);" /></td>
                             <td id="errorfirst" class="error"></td>
                         </tr>
             
-                        <tr>
-                            <th><label for="lastname">Last Name:</label></th>
-                            <td><input type="text" name="lastname" id="lastname" placeholder="Steed" onblur="gatherInput(this);" /></td>
+                        <tr class="form">
+                            <th class="form"><label for="lastname">Last Name:</label></th>
+                            <td class="form"><input type="text" name="lastname" id="lastname" placeholder="Steed" onblur="processInput(this);" /></td>
                             <td id="errorlast" class="error"></td>
                         </tr>
             
-                        <tr>
-                            <th><label for="phone">Phone Number:</label></th>
-                            <td><input type="text" name="phone" id="phone" placeholder="(xxx) xxx-xxxx" onblur="gatherInput(this);" /></td>
+                        <tr class="form">
+                            <th class="form"><label for="phone">Phone Number:</label></th>
+                            <td class="form"><input type="text" name="phone" id="phone" placeholder="(xxx) xxx-xxxx" onblur="processInput(this);" /></td>
                             <td id="errorphone" class="error"></td>
                         </tr>
             
-                        <tr>    
-                            <th><label for="quantity">Shirt Quantity:</label></th>
-                            <td><input type="text" name="quantity" id="quantity" value="1" onblur="gatherInput(this);" /></td>
+                        <tr class="form">    
+                            <th class="form"><label for="quantity">Sticker Quantity:</label></th>
+                            <td class="form"><input type="text" name="quantity" id="quantity" value="1" onblur="processInput(this);" /></td>
                             <td id="errorquantity" class="error"></td>
                         </tr>
             
-                        <tr>
-                            <th><label for="singleprice">Price Per Shirt</label></th>
-                            <td><input type="text" name="singleprice" id="singleprice" value="4.95" readonly="readonly" /></td>
-                            <td></td>
+                        <tr class="form">
+                            <th class="form"><label for="singleprice">Price Per Sticker</label></th>
+                            <td class="form"><input type="text" name="singleprice" id="singleprice" value="4.95" readonly="readonly" /></td>
                         </tr>
 
-                        <tr>
+                        <tr class="form">
                             <td colspan="3" class="buttons">
                                 <input type="button" value="Submit" name="Submit" id="submit" onclick="processOrder();"/>
                                 <input type="reset" value="Reset" name="reset" id="reset" onclick="resetErrors();"/>
                             </td>
                         </tr>                 
-            
-                        <tr>
-                            <td colspan="3" id="printresults">
-                            </td>
-                        </tr>
                     </table>
                 </form>
+                
+                <table id="printresults">
+                    <tr>
+                        <th id="printOrder" class="header"></th>
+                        <td id="outputOrder" class="value"></td>
+                    </tr>
+                    <tr>
+                        <th id="printName" class="header"></th>
+                        <td id="outputName" class="value"></td>
+                    </tr>
+                    <tr>
+                        <th id="printPhone" class="header"></th>
+                        <td id="outputPhone" class="value"></td>
+                    </tr>
+                    <tr>
+                        <th class="header">&nbsp;</th>
+                        <td class="value">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <th id="printQuantity" class="header"></th>
+                        <td id="outputPrice" class="value"></td>
+                    </tr>
+                    <tr id="orderDiscount">
+                        <th id="printDiscount" class="header"></th>
+                        <td id="outputDiscount" class="value"></td>
+                    </tr>
+                    <tr>
+                        <th id="printSubtotal" class="header"></th>
+                        <td id="outputSubtotal" class="value"></td>
+                    </tr>
+                    <tr>
+                        <th id="printTax" class="header"></th>
+                        <td id="outputTax" class="value"></td>
+                    </tr>
+                    <tr>
+                        <th class="header">&nbsp;</th>
+                        <td class="value">&nbsp;</td>
+                    </tr>
+                    <tr id="orderTotal">
+                        <th id="printTotal" class="header"></th>
+                        <td id="outputTotal" class="value"></td>
+                    </tr>
+                </table>
             </section>
             
         </div>     
