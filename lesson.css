@@ -90,18 +90,15 @@ section {
     }
     
     /* Tables */
-    tr {
-        height: 30px;
+    th.header {
+        padding-left: 25px;
+        text-align: left;
+        width: 225px;
     }
     
-    th {
-        padding-right: 5px;
+    td.value {
         text-align: right;
-        width: 115x;
-    }
-    
-    td {
-        width: 190px;
+        width: 250px;
     }
     
     /* Forms */
@@ -113,6 +110,26 @@ section {
     .error {
         color: #000;
     }
+    
+    tr.form {
+        height: 30px;
+    }
+    
+    th.form {
+        padding-right: 5px;
+        text-align: right;
+        width: 115px;
+    }
+    
+    td.form {
+        width: 190px;
+    }
+    
+    td.buttons {
+        padding: 20px 0px 20px 0px;
+        text-align: center;
+        width: 500px;
+    } 
     
     /* User Feedback */
     #printresults {
