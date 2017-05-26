@@ -41,21 +41,6 @@ function processInput(field) {
     }
 } // end gatherInput     
     
-// RESET FORM + ERROR NOTICES
-function resetErrors() {
-    errorfirst.innerHTML = "";
-    errorlast.innerHTML = "";
-    errorphone.innerHTML = "";
-    errorquantity.innerHTML = "";
-    
-    errorfirst.style.color = "Black";
-    errorlast.style.color = "Black";
-    errorphone.style.color = "Black";
-    errorquantity.style.color = "Black";
-    
-    printOrder(" ");
-} //end resetErrors
-    
 // VALIDATE ORDER FORM
 function processOrder() {
     var firstValid = processInput(document.getElementById("firstname")); 
@@ -122,22 +107,22 @@ function calcOrder() {
     var price = document.getElementById("singleprice").value;
     
     // calculations
-    var priceTotal = (quantity * price);
+    var priceTotal = (quantity * price).toFixed(2);
     var discount = calcDiscount(quantity, priceTotal)[1];
     var percent = calcDiscount(quantity, priceTotal)[0];
-    var subTotal = priceTotal - discount;
-    var taxAmount = subTotal * TAXRATE;
-    var orderTotal = subTotal + taxAmount;
+    var subTotal = (priceTotal - discount).toFixed(2);
+    var taxAmount = (subTotal * TAXRATE).toFixed(2);
+    var orderTotal = (subTotal + taxAmount).toFixed(2);
     
     // order information to be messaged to user
     printOrder("printOrder", "<h3>Order Confirmation</h3>", "outputOrder", " ");
     printOrder("printName", "Customer Name", "outputName", fullname);
     printOrder("printPhone", "Phone Number", "outputPhone", phone);
-    printOrder("printQuantity", quantity + " sticker(s)", "outputPrice", "$" + priceTotal.toFixed(2));
+    printOrder("printQuantity", quantity + " sticker(s)", "outputPrice", "$" + priceTotal);
     printOrder("printDiscount", percent + " Discount", "outputDiscount", "-$" + discount);
-    printOrder("printSubtotal", "Subtotal", "outputSubtotal", "$" + subTotal.toFixed(2));
-    printOrder("printTax", "Sales Tax (8.5%)", "outputTax", "+$" + taxAmount.toFixed(2));
-    printOrder("printTotal", "Order Total", "outputTotal", "$" + orderTotal.toFixed(2));
+    printOrder("printSubtotal", "Subtotal", "outputSubtotal", "$" + subTotal);
+    printOrder("printTax", "Sales Tax (8.5%)", "outputTax", "+$" + taxAmount);
+    printOrder("printTotal", "Order Total", "outputTotal", "$" + orderTotal);
   
 } //end calcOrder
 
@@ -151,3 +136,25 @@ function printOrder(printID, header, outputID, output) {
     document.getElementById("orderTotal").style.color = "Green";
     document.getElementById("orderTotal").style.fontWeight = "600";
 }// end printOrder
+
+// RESET FORM + ERROR NOTICES
+function resetErrors() {
+    errorfirst.innerHTML = "";
+    errorlast.innerHTML = "";
+    errorphone.innerHTML = "";
+    errorquantity.innerHTML = "";
+    
+    errorfirst.style.color = "Black";
+    errorlast.style.color = "Black";
+    errorphone.style.color = "Black";
+    errorquantity.style.color = "Black";
+    
+    printOrder("printOrder", " ", "outputOrder", " ");
+    printOrder("printName", " ", "outputName", " ");
+    printOrder("printPhone", " ", "outputPhone", " ");
+    printOrder("printQuantity", " ", "outputPrice", " ");
+    printOrder("printDiscount", " ", "outputDiscount", " ");
+    printOrder("printSubtotal", " ", "outputSubtotal", "$" + " ");
+    printOrder("printTax", " ", "outputTax", " ");
+    printOrder("printTotal", " ", "outputTotal", "$" + " ");
+} //end resetErrors
