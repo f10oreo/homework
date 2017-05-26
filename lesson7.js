@@ -107,22 +107,22 @@ function calcOrder() {
     var price = document.getElementById("singleprice").value;
     
     // calculations
-    var priceTotal = (quantity * price).toFixed(2);
+    var priceTotal = (quantity * price);
     var discount = calcDiscount(quantity, priceTotal)[1];
     var percent = calcDiscount(quantity, priceTotal)[0];
-    var subTotal = (priceTotal - discount).toFixed(2);
-    var taxAmount = (subTotal * TAXRATE).toFixed(2);
-    var orderTotal = (subTotal + taxAmount).toFixed(2);
+    var subTotal = priceTotal - discount;
+    var taxAmount = subTotal * TAXRATE;
+    var orderTotal = subTotal + taxAmount;
     
     // order information to be messaged to user
     printOrder("printOrder", "<h3>Order Confirmation</h3>", "outputOrder", " ");
     printOrder("printName", "Customer Name", "outputName", fullname);
     printOrder("printPhone", "Phone Number", "outputPhone", phone);
-    printOrder("printQuantity", quantity + " sticker(s)", "outputPrice", "$" + priceTotal);
+    printOrder("printQuantity", quantity + " sticker(s)", "outputPrice", "$" + priceTotal.toFixed(2));
     printOrder("printDiscount", percent + " Discount", "outputDiscount", "-$" + discount);
-    printOrder("printSubtotal", "Subtotal", "outputSubtotal", "$" + subTotal);
-    printOrder("printTax", "Sales Tax (8.5%)", "outputTax", "+$" + taxAmount);
-    printOrder("printTotal", "Order Total", "outputTotal", "$" + orderTotal);
+    printOrder("printSubtotal", "Subtotal", "outputSubtotal", "$" + subTotal.toFixed(2));
+    printOrder("printTax", "Sales Tax (8.5%)", "outputTax", "+$" + taxAmount.toFixed(2));
+    printOrder("printTotal", "Order Total", "outputTotal", "$" + orderTotal.toFixed(2));
   
 } //end calcOrder
 
