@@ -116,19 +116,20 @@ function calcOrder() {
     // gather data
     var firstname = document.getElementById("firstname").value;
     var lastname = document.getElementById("lastname").value;
-    var phone = document.getElementById("phone").value;
+    var fullname = firstname + " " + lastname;
+    var phone = document.getElementById("phone").value; 
     var quantity = document.getElementById("quantity").value;
     var price = document.getElementById("singleprice").value;
+    
+    // calculations
     var priceTotal = (quantity * price);
     var discount = calcDiscount(quantity, priceTotal)[1];
     var percent = calcDiscount(quantity, priceTotal)[0];
     var subTotal = priceTotal - discount;
     var taxAmount = subTotal * TAXRATE;
     var orderTotal = subTotal + taxAmount;
-    var outputOrder = " ";
     
-    var fullname = firstname + " " + lastname;
-    
+    // order information to be messaged to user
     printOrder("printOrder", "<h3>Order Confirmation</h3>", "outputOrder", " ");
     printOrder("printName", "Customer Name", "outputName", fullname);
     printOrder("printPhone", "Phone Number", "outputPhone", phone);
