@@ -76,24 +76,36 @@ function processOrder() {
 } //end processOrder 
 
 // CALCULATE DISCOUNT 
-function bulkDiscount(quantity, priceTotal){    
+function calcDiscount(quantity, priceTotal){    
     var discount = " ";
+    var percent = " ";
+    var bulk = [percent, discount];
 
     if ((quantity >= 10) && (quantity <= 19)) {
         discount = ((10 / 100) * priceTotal);
-        return discount;
+        percent = "10%";
+        bulk = [percent, discount.toFixed(2)];
+        return bulk;
     } else if ((quantity >= 20) && (quantity <= 29)) {
         discount = ((20 / 100) * priceTotal);
-        return discount;
+        percent = "20%";
+        bulk = [percent, discount.toFixed(2)];
+        return bulk;
     } else if ((quantity >= 30) && (quantity <= 39)) {
         discount = ((30 / 100) * priceTotal);
-        return discount;
+        percent = "30%";
+        bulk = [percent, discount.toFixed(2)];
+        return bulk;
     } else if ((quantity >= 40) && (quantity <= 49)) {
         discount = ((40 / 100) * priceTotal);
-        return discount;
+        percent = "40%";
+        bulk = [percent, discount.toFixed(2)];
+        return bulk;
     } else {
         discount = 0;
-        return discount;
+        percent = "No";
+        bulk = [percent, discount.toFixed(2)];
+        return bulk;
     }
 } // end bulkDiscount
 
@@ -108,7 +120,8 @@ function calcOrder() {
     var quantity = document.getElementById("quantity").value;
     var price = document.getElementById("singleprice").value;
     var priceTotal = (quantity * price);
-    var discount = bulkDiscount(quantity, priceTotal);
+    var discount = calcDiscount(quantity, priceTotal)[1];
+    var percent = calcDiscount(quantity, priceTotal)[0];
     var subTotal = priceTotal - discount;
     var taxAmount = subTotal * TAXRATE;
     var orderTotal = subTotal + taxAmount;
@@ -120,7 +133,7 @@ function calcOrder() {
     printOrder("printName", "Customer Name", "outputName", fullname);
     printOrder("printPhone", "Phone Number", "outputPhone", phone);
     printOrder("printQuantity", quantity + " sticker(s)", "outputPrice", "$" + priceTotal.toFixed(2));
-    printOrder("printDiscount", "Quantity Discount (20-49 stickers)", "outputDiscount", "-$" + discount.toFixed(2));
+    printOrder("printDiscount", percent + " Discount", "outputDiscount", "-$" + discount);
     printOrder("printSubtotal", "Subtotal", "outputSubtotal", "$" + subTotal.toFixed(2));
     printOrder("printTax", "Sales Tax (8.5%)", "outputTax", "+$" + taxAmount.toFixed(2));
     printOrder("printTotal", "Order Total", "outputTotal", "$" + orderTotal.toFixed(2));
