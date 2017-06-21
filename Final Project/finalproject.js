@@ -837,7 +837,7 @@ function startBlink() {
         } else {
             currentTime.className = "blink_on";
         }
-    }, 2500);
+    }, 1500);
 	
 	// DEBUG
 	printDebug("action", "startBlink() executed.");
