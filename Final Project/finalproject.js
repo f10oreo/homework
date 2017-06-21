@@ -835,7 +835,7 @@ function startBlink() {
         if (currentTime.className === "blink_off") {
             currentTime.className = "blink_on";
         } else {
-            currentTime.className = "blink_on";
+            currentTime.className = "blink_off";
         }
     }, 750);
 	
