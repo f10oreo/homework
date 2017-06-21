@@ -512,6 +512,24 @@ function countingUp() {
 	// update currenttime
 	var currentTime = document.getElementById("current_time");
 	currentTime.innerHTML = mm + ":" + ss + ":" + hh;
+	
+	if (minutes === "99" && seconds === "59" && hundreds === "99") {
+		clearInterval(timerStopwatch);
+		
+		document.getElementById("start").className = "disabled";
+		document.getElementById("stop").className = "enabled";
+		
+		document.getElementById("countdown_console").style.visibility = "visible";
+		document.getElementById("time_expired").style.visibility = "visible";
+		document.getElementById("time_expired").innerHTML = "You've hit the max time allowed!";
+		document.getElementById("time_form").style.visibility = "hidden";
+		
+		alert("You've hit the max time allowed!");
+
+		// disable stop click
+		document.getElementById("stop").removeEventListener("mousedown", clickStop);
+		document.getElementById("stop").removeEventListener("mouseup", releaseStop);
+	}
 } //end countingUp
 
 // STOP STOPWATCH
@@ -655,7 +673,7 @@ function validateCountdown() {
 		
 		return adjusted;
 	} else if (inputTime === "") { // time is empty
-        	document.getElementById("stop").className = "enabled";
+        document.getElementById("stop").className = "enabled";
 		document.getElementById("start").className = "disabled";
 		
 		// DEBUG
