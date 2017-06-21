@@ -83,6 +83,7 @@ function stopwatchMode() {
     document.getElementById("current_time").className = "blink_off";
 	document.getElementById("current_time").innerHTML = "00:00:00";
 	document.getElementById("countdown_console").style.visibility = "hidden";
+	document.getElementById("time_expired").style.visibility = "hidden";
 
 	// disable multi-click
 	document.getElementById("stopwatch").removeEventListener("click", enableStopwatch);
@@ -125,6 +126,7 @@ function enableStopwatch() {
 	} else {
 		modeStopwatch = true;
 		clearInterval(timerCountdown);
+		stopBlink();
 		stopwatchMode();
 		
 		// DEBUG
@@ -154,6 +156,8 @@ function countdownMode() {
 	document.getElementById("stopwatch").addEventListener("click", enableStopwatch);
 
 	// account for switching mid-timer
+	document.getElementById("input_time").addEventListener("keydown", enterDown);
+	document.getElementById("input_time").addEventListener("keyup", enterUp);
 	document.getElementById("start").addEventListener("mousedown", clickStart);
 	document.getElementById("start").addEventListener("mouseup", releaseStart);
 	document.getElementById("stop").removeEventListener("mousedown", clickStop);
@@ -504,22 +508,25 @@ function startStopwatch() {
 // STOPWATCH CALCULATIONS
 function countingUp() {
 	"use strict";
-	var duration = Date.now() - initial; //milliseconds
-
-	var minutes = Math.floor((duration / (1000 * 60)) % 60); //minutes
-	var seconds = Math.floor((duration / 1000) % 60); //seconds
-	var hundreds = Math.floor((duration / 10) % 100); //hundreds
-
-	// pad with leading zeroes
-	var mm = (minutes < 10) ? ("0" + minutes) : minutes;
-	var ss = (seconds < 10) ? ("0" + seconds) : seconds;
-	var hh = (hundreds < 10) ? ("0" + hundreds) : hundreds;
-
-	// update currenttime
-	var currentTime = document.getElementById("current_time");
-	currentTime.innerHTML = mm + ":" + ss + ":" + hh;
 	
-	if (minutes === "99" && seconds === "59" && hundreds === "99") {
+	var duration = Date.now() - initial; //milliseconds
+    
+    console.log("duration = " + duration);
+    
+    if (duration < 3599990) {
+        var minutes = Math.floor((duration / (1000 * 60)) % 60); //minutes
+        var seconds = Math.floor((duration / 1000) % 60); //seconds
+        var hundreds = Math.floor((duration / 10) % 100); //hundreds
+
+        // pad with leading zeroes
+        var mm = (minutes < 10) ? ("0" + minutes) : minutes;
+        var ss = (seconds < 10) ? ("0" + seconds) : seconds;
+        var hh = (hundreds < 10) ? ("0" + hundreds) : hundreds;
+
+        // update currenttime
+        var currentTime = document.getElementById("current_time");
+        currentTime.innerHTML = mm + ":" + ss + ":" + hh;
+    } else {
 		clearInterval(timerStopwatch);
 		
 		document.getElementById("start").className = "disabled";
@@ -769,56 +776,57 @@ function startCountdown() {
 // COUNTDOWN CALCULATIONS
 function countingDown() {
 	"use strict";
-	current = Date.now();
-	var calcMM = Math.floor(inputMinutes * 1000 * 60); //minutes
-	var calcSS = Math.floor(inputSeconds * 1000); //seconds
-	var calcHH = Math.floor(inputHundreds * 10); //hundreds
+        current = Date.now();
+        var calcMM = Math.floor(inputMinutes * 1000 * 60); //minutes
+        var calcSS = Math.floor(inputSeconds * 1000); //seconds
+        var calcHH = Math.floor(inputHundreds * 10); //hundreds
 
-	duration = calcMM + calcSS + calcHH;
-	var newInitial = initial + duration;
-	var timeLeft = newInitial - current; // milliseconds
-	
-	/*/ DEBUG - disabled to prevent excessive console logs
-	//console.log("current = " + current);
-	//console.log("duration = " + duration);
-	//console.log("initial = " + (initial + duration));
-	//console.log("timeLeft = " + timeLeft);
-	/*/
+        duration = calcMM + calcSS + calcHH;
+        var newInitial = initial + duration;
+        var timeLeft = newInitial - current; // milliseconds
+    
+        /*/ DEBUG - disabled to prevent excessive console logs
+        //console.log("current = " + current);
+        //console.log("duration = " + duration);
+        //console.log("initial = " + (initial + duration));
+        //console.log("timeLeft = " + timeLeft);
+        /*/
+        
+    if (timeLeft > 0) {
 
-	var minutes = Math.floor((timeLeft / (1000 * 60)) % 60); //minutes
-	var seconds = Math.floor((timeLeft / 1000) % 60); //seconds
-	var hundreds = Math.floor((timeLeft / 10) % 100); //hundreds
-	
-	/*/ DEBUG - disabled to prevent excessive console logs
-	//console.log("minutes = " + minutes);
-	//console.log("seconds = " + seconds);
-	//console.log("hundreds = " + hundreds);
-	/*/
+        var minutes = Math.floor((timeLeft / (1000 * 60)) % 60); //minutes
+        var seconds = Math.floor((timeLeft / 1000) % 60); //seconds
+        var hundreds = Math.floor((timeLeft / 10) % 100); //hundreds
+    
+        /*/ DEBUG - disabled to prevent excessive console logs
+        //console.log("minutes = " + minutes);
+        //console.log("seconds = " + seconds);
+        //console.log("hundreds = " + hundreds);
+        /*/
+        
+        // concatenate time w/ leading 0s
+        var mm = (minutes < 10) ? ("0" + minutes) : minutes;
+        var ss = (seconds < 10) ? ("0" + seconds) : seconds;
+        var hh = (hundreds < 10) ? ("0" + hundreds) : hundreds;
+    
+        /*/ DEBUG - disabled to prevent excessive console logs
+        //console.log("mm = " + mm);
+        //console.log("ss = " + ss);
+        //console.log("hh = " + hh);
+        /*/
 
-	// concatenate time w/ leading 0s
-	var mm = (minutes < 10) ? ("0" + minutes) : minutes;
-	var ss = (seconds < 10) ? ("0" + seconds) : seconds;
-	var hh = (hundreds < 10) ? ("0" + hundreds) : hundreds;
-	
-	/*/ DEBUG - disabled to prevent excessive console logs
-	//console.log("mm = " + mm);
-	//console.log("ss = " + ss);
-	//console.log("hh = " + hh);
-	/*/
-
-	// update currenttime
-	var currentTime = document.getElementById("current_time");
-	currentTime.innerHTML = mm + ":" + ss + ":" + hh;
-
-	if (minutes === 0 && seconds === 0 && hundreds === 0) {
+        // update currenttime
+        var currentTime = document.getElementById("current_time");
+        currentTime.innerHTML = mm + ":" + ss + ":" + hh;
+	} else {
 		stopCountdown();
-		
-		
+	
 		document.getElementById("start").className = "disabled";
 		document.getElementById("stop").className = "enabled";
 		document.getElementById("time_expired").style.visibility = "visible";
 		
 		document.getElementById("current_time").className = "blink_on";
+		document.getElementById("current_time").innerHTML = "00:00:00";
 		startBlink();
 
 		// disable stop click
@@ -837,10 +845,8 @@ function startBlink() {
 	    var currentTime = document.getElementById("current_time");	        
         if (currentTime.className === "blink_off") {
             currentTime.className = "blink_on";
-            console.log("blink on");
         } else {
             currentTime.className = "blink_off";
-            console.log("blink off");
         }
     }, 750);
 	
