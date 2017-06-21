@@ -1,3 +1,4 @@
+/* f.tenorio JUNE 2017 */
 /* PSEUDO CODE */
 
 User clicks TOGGLE button to enable stopwatch or countdown timer
