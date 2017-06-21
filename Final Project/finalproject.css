@@ -1,0 +1,171 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    border-collapse: collapse;
+}
+
+body {
+    font-family: Courier New, monospace;
+    font-size: 11px;
+}
+
+    h1 {
+        font-size: 21px;
+        margin: 15px 15px 10px;
+    }
+    
+    h2 {
+        font-size: 18px;
+        margin: 10px 15px 15px;
+    }
+    
+    h3 {
+        font-size: 14px;
+        margin: 10px 15px 15px;
+    }
+    
+    h4 {
+        font-size: 12px;
+    }
+    
+    p {
+        margin-bottom: 5px;
+    } 
+
+    /* Buttons */    
+    .enabled {
+        background-color: lightblue;
+        display: table-cell;
+        padding: 5px;
+        text-align: center;
+        width: inherit;
+        box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.5);
+        -moz-box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.5);
+        -webkit-box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.5);
+    }
+
+    .disabled {
+        background-color: aliceblue;
+        display: table-cell;
+        padding: 5px;
+        text-align: center;
+        width: inherit;
+        box-shadow: inset -1px -1px 1px 1px rgba(0,0,0,0.5);
+        -moz-box-shadow: inset -1px -1px 1px 1px rgba(0,0,0,0.5);
+        -webkit-box-shadow: inset -1px -1px 1px 1px rgba(0,0,0,0.5);
+    }
+        
+/* Wrap: Header & Content */    
+#body_wrap {
+    border: 1px solid black;
+    display: table;
+    height: 575px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+}
+
+/* Header */
+header {
+    border: 1px solid black;
+    display: table-header-group;
+    font-family: Times New Roman, Times, serif;
+    width: 800px;
+}
+
+/* Stopwatch/Countdown Timer */
+section {
+    display: table-cell;
+    padding: 5px;
+    text-align: center;
+    vertical-align: top;
+    width: 500px;
+}
+
+    #watch_toggle {
+        width:490px;
+    }
+    
+    #watch_face {
+        height: 253px;
+    }
+    
+        #current_time {
+            font-size: 102px;
+            margin-top: 50px;
+        }
+    
+    #timer_toggle .disabled, #timer_toggle .enabled  {
+        width: 164px;
+    }
+    
+    /* Countdown Timer specific */
+    #countdown_console {
+    }
+    
+        #time_expired {
+            color: firebrick;
+            font-size: 37px;
+            margin: 13px 0px;
+            visibility: hidden;
+        }
+    
+        label {
+            font-weight: bold;
+        }
+    
+        input {
+            text-align: center;
+            width: 125px;
+        }
+    
+/* Prompt/Debug */
+aside { 
+    border-left: 1px solid black;
+    display: table-cell;
+    height: 485px;
+    margin-left: 500px;
+    padding: 5px;
+    vertical-align: top;
+    width: 300px;
+}
+    
+    #debug_toggle {
+        width: 289px;
+    }
+    
+    #prompt_print {
+        height: 414px;
+        overflow-y: scroll;
+        width: 289px;
+        list-style-position: inside;
+    }
+    
+        #prompt_print li {
+            padding-left: 20px;
+            text-indent: -20px;
+        }
+    
+    /* User Feedback */
+    #debug_print {
+        height: 414px;
+        overflow-y: scroll;
+        width: 289px;
+    }
+    
+        #debug_print p {
+            margin-bottom: 3px;
+            padding-left: 25px;
+            text-indent: -26px;
+        }
+        
+        .action {
+            color: black;
+        }
+        
+        .error {
+            color: firebrick;
+            font-style: italic;
+        }

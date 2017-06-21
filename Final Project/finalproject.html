@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+		<meta charset="UTF-8">
+		<title>Final Project</title>				
+        <link rel="stylesheet" type="text/css" href="finalproject.css">
+        <script type="text/javascript" src="finalproject.js"></script>
+    </head>    
+	<body>
+        <div id="body_wrap">
+            <header> <!-- Header -->   
+                <h1>Final Project</h1>
+                <h2>Faith-Lynn Tenorio</h2>               
+            </header>  
+            
+            <div id="main_wrap">
+                <section> <!-- Stopwatch/Countdown Timer -->
+                    <div id="watch_toggle" class="toggle">
+                        <span id="stopwatch" class="enabled">Stopwatch</span>
+                        <span id="countdown" class="disabled">Countdown</span>
+                    </div>  
+                    
+                    <div id="watch_face"> <!-- Current Time and Input Field -->
+                        <h3 id="mode_state">Stopwatch</h3>
+                        <p id="current_time">00:00:00</p>
+                        <h4>mm:ss:hh</h4>
+                    </div>
+
+                    <div id="timer_toggle" class="toggle"> <!-- Timer Buttons -->
+                        <span id="start" class="disabled">Start</span>
+                        <span id="stop"  class="enabled">Stop</span>
+                        <span id="reset"  class="disabled">Reset</span>
+                    </div>
+                    
+                    <div id="countdown_console"><!--  -->
+                        <p id="time_expired">Your time has expired.</p>
+                    
+                        <!-- Countdown Input -->
+                        <form action="#" method="post" enctype="multipart/form-data" name="time_form" id="time_form">                
+                            <p class="forminput">
+                                <label for="input_time">Enter time for countdown.<br />(1 seconds to 10 minutes)</label><br />
+                                <input type="text" name="input_time" id="input_time" size="30" maxlength="8" placeholder="00:00:00"/>
+                            </p>
+                        </form>
+                    </div>
+                </section>
+            
+                <aside> <!-- Debug Console -->
+                    <div id="debug_toggle" class="toggle"> <!-- Switch Show/Hide -->
+                        <span id="debug_enable"  class="disabled">Enable Debug</span>
+                        <span id="debug_disable" class="enabled">Disable Debug</span>
+                    </div>
+                    
+                    <!-- when debug mode disabled -->
+                    <h3 id="prompt_log">Stopwatch and Countdown Timer</h3>
+                    <div id="prompt_print"> <!-- Final Project Prompt -->
+                        <p>
+                            Your final project is to build a combination stopwatch and countdown timer. The application
+                            will allow the user to start either a stopwatch or a countdown timer. Only one timer should 
+                            be able to run at a time.
+                        </p>
+                        <p>These are the minimum required options for the full application:</p>
+                        <ul>
+                            <li>User option to select which type of timer to run.</li>
+                            <li>Stopwatch
+                                <ul>
+                                    <li>Start/Stop Button that reflects current state</li>
+                                    <li>Reset button to restart</li>
+                                    <li>Visual indication of current time elapsed in proper time format 00:00:00
+                                        <ul>
+                                            <li>minutes, seconds, hundredths</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Countdown
+                                <ul>
+                                    <li>User input of time to countdown in proper time format
+                                        <ul>
+                                            <li>00:00:00
+                                                <ul>
+                                                    <li>minutes, seconds, hundredths</li>
+                                                </ul>
+                                            </li>
+                                            <li>validate with regex</li>
+                                        </ul>
+                                    </li>
+                                    <li>Start/pause button</li>
+                                    <li>Some form of notification when time has elapsed to notify user</li>
+                                    <li>Visual indication of current time status in proper time format 00:00:00
+                                        <ul>
+                                            <li>minutes, seconds, hundredths</li>
+                                        </ul>
+                                    </li>
+                                    <li>Maximum 10 minute countdown with entry validation for range</li>
+                                </ul>
+                            </li>
+                            <li>Debug Mode
+                                <ul>
+                                    <li>Visual output of states
+                                        <ul>
+                                            <li>When buttons are clicked</li>
+                                            <li>Time validation entry</li>
+                                            <li>Indication of when a function has been called</li>
+                                        </ul>
+                                    </li>
+                                    <li>on/off</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- when debug mode enabled -->
+                    <h3 id="debug_log">Debug Log</h3>
+                    <div id="debug_print"> <!-- Debug Feedback -->
+                        <!-- dynamic responses from printDebug() here -->
+                    </div> 
+                </aside> 
+            </div>
+        </div>     
+	</body>
+</html> 

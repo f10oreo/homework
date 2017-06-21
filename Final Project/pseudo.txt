@@ -1,0 +1,31 @@
+/* PSEUDO CODE */
+
+User clicks TOGGLE button to enable stopwatch or countdown timer
+If STOPWATCH MODE is enabled
+    User clicks START button
+        Timer starts and current time increases, shown in mm:ss:hh format
+    User clicks STOP button
+        Timer breaks and current time is static
+    Use clicks RESET button
+        Current time is cleared and returned to 00:00:00
+If COUNTDOWN MODE is enabled
+    User inputs time duration for counter in mm:ss:hh format
+    User clicks START button
+        VALIDATE user input to match mm:ss:hh and <= 10min
+            If not valid, timer does not start
+        Timer starts and current time decreases until it reaches 00:00:00
+            ALERT user that countdown is finished
+    User clicks PAUSE button
+        Timer breaks and current time is static
+    Use clicks RESET button
+        Current time is cleared and returned to --:--:--
+        User input field is cleared
+If DEBUG MODE is enabled
+    SHOW debug console
+        PRINT the id of the button clicked
+        PRINT whether or not the user's input is valid
+        PRINT any functions triggered 
+            Start timer
+            Stop/Pause timer
+            Reset current time
+    HIDE debug console if disabled, but don't delete 
