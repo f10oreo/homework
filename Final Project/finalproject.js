@@ -1,16 +1,18 @@
-// f.tenorio June 2017
-
 // GLOBAL VARIABLES
 var modeStopwatch;
 var modeDebug;
+
 var timerStopwatch;
 var initial;
+
 var timerCountdown;
 var inputArray;
 var current;
 var inputMinutes;
 var inputSeconds;
 var inputHundreds;
+var timerBlink;
+
 var onResume;
 var resumeTime;
 var duration;
@@ -24,6 +26,7 @@ window.onload = function() {
 	document.getElementById("stopwatch").className = "enabled";
 	document.getElementById("countdown").className = "disabled";
 	document.getElementById("mode_state").innerHTML = "Stopwatch";
+	document.getElementById("current_time").className = "blink_off";
 	document.getElementById("current_time").innerHTML = "00:00:00";
 
 	document.getElementById("start").className = "disabled";
@@ -77,6 +80,7 @@ function stopwatchMode() {
 	document.getElementById("stop").className = "enabled";
 	document.getElementById("stop").innerHTML = "Stop";
 
+    document.getElementById("current_time").className = "blink_off";
 	document.getElementById("current_time").innerHTML = "00:00:00";
 	document.getElementById("countdown_console").style.visibility = "hidden";
 
@@ -405,6 +409,7 @@ function clickReset() {
 		document.getElementById("stop").removeEventListener("mouseup", releaseStop);
 	} else {
 		clearInterval(timerCountdown);
+		stopBlink();
 
 		// disable multi-click   
 		document.getElementById("reset").removeEventListener("mousedown", clickReset);
@@ -430,6 +435,7 @@ function releaseReset() {
 	document.getElementById("reset").className = "disabled";
 
 	document.getElementById("current_time").innerHTML = "00:00:00";
+	document.getElementById("current_time").className = "blink_off";
 	document.getElementById("time_expired").style.visibility = "hidden";
 	document.getElementById("input_time").value = "";
 
@@ -523,8 +529,6 @@ function countingUp() {
 		document.getElementById("time_expired").style.visibility = "visible";
 		document.getElementById("time_expired").innerHTML = "You've hit the max time allowed!";
 		document.getElementById("time_form").style.visibility = "hidden";
-		
-		alert("You've hit the max time allowed!");
 
 		// disable stop click
 		document.getElementById("stop").removeEventListener("mousedown", clickStop);
@@ -808,10 +812,11 @@ function countingDown() {
 
 	if (minutes === 0 && seconds === 0 && hundreds === 0) {
 		stopCountdown();
+		startBlink();
+		
 		document.getElementById("start").className = "disabled";
 		document.getElementById("stop").className = "enabled";
 		document.getElementById("time_expired").style.visibility = "visible";
-		alert("Your time has expired!");
 
 		// disable stop click
 		document.getElementById("stop").removeEventListener("mousedown", clickStop);
@@ -821,6 +826,31 @@ function countingDown() {
 	//DEBUG - for checking one execution
 	//stopCountdown();
 } // end countingDown
+
+// BLINK ON TIME EXPIRATION
+function startBlink() {
+    "use strict";
+	timerBlink = setInterval(function() {
+	    var currentTime = document.getElementById("current_time");	        
+        if (currentTime.className === "blink_off") {
+            currentTime.className = "blink_on";
+        } else {
+            currentTime.className = "blink_on";
+        }
+    }, 2500);
+	
+	// DEBUG
+	printDebug("action", "startBlink() executed.");
+} // end startBlink
+
+// BLINK ON TIME EXPIRATION
+function stopBlink() {
+    "use strict";
+	clearInterval(timerBlink);
+	
+	// DEBUG
+	printDebug("action", "stopBlink() executed.");
+} // end stopBlink
 
 // STOP COUNTDOWN TIMER
 function stopCountdown() {
