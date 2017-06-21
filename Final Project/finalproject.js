@@ -1,3 +1,4 @@
+// f.tenorio JUNE 2017
 // GLOBAL VARIABLES
 var modeStopwatch;
 var modeDebug;
