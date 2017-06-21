@@ -812,11 +812,14 @@ function countingDown() {
 
 	if (minutes === 0 && seconds === 0 && hundreds === 0) {
 		stopCountdown();
-		startBlink();
+		
 		
 		document.getElementById("start").className = "disabled";
 		document.getElementById("stop").className = "enabled";
 		document.getElementById("time_expired").style.visibility = "visible";
+		
+		document.getElementById("current_time").className = "blink_on";
+		startBlink();
 
 		// disable stop click
 		document.getElementById("stop").removeEventListener("mousedown", clickStop);
@@ -834,8 +837,10 @@ function startBlink() {
 	    var currentTime = document.getElementById("current_time");	        
         if (currentTime.className === "blink_off") {
             currentTime.className = "blink_on";
+            console.log("blink on");
         } else {
             currentTime.className = "blink_off";
+            console.log("blink off");
         }
     }, 750);
 	
