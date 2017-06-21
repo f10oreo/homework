@@ -655,12 +655,13 @@ function validateCountdown() {
 		
 		return adjusted;
 	} else if (inputTime === "") { // time is empty
-        document.getElementById("stop").className = "enabled";
+        	document.getElementById("stop").className = "enabled";
 		document.getElementById("start").className = "disabled";
 		
 		// DEBUG
 		printDebug("error", "'input_time' = empty");
 		printDebug("error", "There is no input to validate.");
+		document.getElementById("error_log").innerHTML = "There is no input to validate.";
 	} else if (validMax !== true && validOver) { // time is more than 10:00:00
 		document.getElementById("stop").className = "enabled";
 		document.getElementById("start").className = "disabled";
@@ -668,6 +669,7 @@ function validateCountdown() {
 		// DEBUG
 		printDebug("error", "'input_time' = " + inputTime);
 		printDebug("error", "Input is too large.");
+		document.getElementById("error_log").innerHTML = "Input is too large.";
 	} else if (valid && validSmall) { // time is less than 00:01:00
 		document.getElementById("stop").className = "enabled";
 		document.getElementById("start").className = "disabled";
@@ -675,6 +677,7 @@ function validateCountdown() {
 		// DEBUG
 		printDebug("error", "'input_time' = " + inputTime);
 		printDebug("error", "Input is too small.");	
+		document.getElementById("error_log").innerHTML = "Input is too small.";
 	} else if (inputTime !== "" && validAlpha) { // input has letters or invalid special characters
 		document.getElementById("stop").className = "enabled";
 		document.getElementById("start").className = "disabled";
@@ -682,6 +685,7 @@ function validateCountdown() {
 		// DEBUG
 		printDebug("error", "'input_time' = " + inputTime);
 		printDebug("error", "Input is not a number.");
+		document.getElementById("error_log").innerHTML = "Input is not a number.";
 	} else if (inputTime.length < 8) { // input has some other error		
 		document.getElementById("stop").className = "enabled";
 		document.getElementById("start").className = "disabled";
@@ -689,6 +693,7 @@ function validateCountdown() {
 		// DEBUG
 		printDebug("error", "'input_time' = " + inputTime);
 		printDebug("error", "Input is not in mm:hh:ss format.");
+		document.getElementById("error_log").innerHTML = "Input is not in mm:hh:ss format.";
 	}
 } //end validateCountdown
 
