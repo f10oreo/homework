@@ -122,6 +122,11 @@ section {
             text-align: center;
             width: 125px;
         }
+
+        #error_log {
+            color: firebrick; 
+            margin: 13px 0px;
+        }
     
 /* Prompt/Debug */
 aside { 
